@@ -84,3 +84,4 @@ console.log(isChecked && isClose);  // && (знаки имперсанта) - э
 console.log(isChecked || isClose); // || - это оператор ИЛИ (если хотя бы одиг из них true, здесь будет true)
 console.log(isChecked && !isClose); // ! - это знак отрицания, меняет false на true, у нас получится вывод true
 
+console.log("Хуй пизда джигурда");
