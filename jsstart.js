@@ -79,7 +79,7 @@ console.log("2" === 2); //Здесь будет false, т.к. сравнивае
 
 let isChecked = true,
     isClose = false;
-console.log(isChecked && isClose);  // && (знаки имперсанта) - это оператор И 
+console.log(isChecked && isClose);  // && (знаки имперсанта) (И) - это оператор И 
 //Тут будет false, тк один из них false
 console.log(isChecked || isClose); // || - это оператор ИЛИ (если хотя бы одиг из них true, здесь будет true)
 console.log(isChecked && !isClose); // ! - это знак отрицания, меняет false на true, у нас получится вывод true
