@@ -30,3 +30,20 @@ for (let i = 1; i < 8; i++) {
     }
     console.log (i);
 }
+
+console.log("!!!!!!!!!!!!!!!!!");
+for (let i = 1; i < 11; i++) {
+    console.log(i);
+}
+
+let i = 1;
+while (i <= 10) {
+    console.log(i);
+    i++;
+}
+
+let mass = [1, 2, 3, 4, 5];
+    console.log(mass.length);
+    for (let i = 1; i <= mass.length; i++) {
+        console.log(i);
+}

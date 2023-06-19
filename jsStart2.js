@@ -36,3 +36,30 @@ switch (num) {    //Здесь вбиваем то, что будем прове
         console.log("Что то пошло не так!");
         break;
 }
+
+console.log("!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+let red = 'Стой', yellow = 'Подготовься, но стой', green = 'Иди';
+
+let light = green;
+if (light == red) {
+    console.log('Стой');
+} else if (light == yellow) {
+    console.log('Подготовься, но стой');
+} else {
+    console.log(green);
+}
+
+switch(light) {
+    case red:
+        console.log(red);
+        break;
+    case yellow:
+        conslole.log(yellow);
+        break;
+    default:
+        console.log(green);
+        break;
+}
+
+light = green ? console.log(green) : console.log("Стой");
