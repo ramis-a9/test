@@ -23,9 +23,27 @@ console.log(typeof('number'+1+3));
 console.log(typeof(1+3+'number'));
 console.log(typeof('4px'-3));
 
-console.log(calc(3, 5));
-console.log(calc(6, 8));
-
-function calc(a, b) {
-    return (a+b); //return возвращает переменные. Может вернуть переменные вне ее функции
+function reternNumber (n) {
+n = n + "";
+return n.split('').reverse().join('');
 }
+console.log(reternNumber(2281488));
+
+function checkPolindron (text) {
+    let x = text;
+    text = text + "";
+    if (text.split('').reverse().join('') == x) {
+        return text;
+    } else {
+        return text + " " + "не Палиндром";
+    }
+}
+console.log(checkPolindron("level"));
+console.log(checkPolindron('topot'));
+console.log(checkPolindron("that"));
+
+function alphabet_order(str) {
+    str = str + "";
+    return str.sort;
+}
+console.log(alphabet_order("dfdaasca")); НЕ РАБОТАЕТ ОН!
