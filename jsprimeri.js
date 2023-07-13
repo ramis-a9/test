@@ -43,7 +43,13 @@ console.log(checkPolindron('topot'));
 console.log(checkPolindron("that"));
 
 function alphabet_order(str) {
-    str = str + "";
-    return str.sort;
+    return str.split("").sort().join(""); 
 }
-console.log(alphabet_order("dfdaasca")); НЕ РАБОТАЕТ ОН!
+console.log(alphabet_order("bcdab"));
+
+function detect_data_type(value) {
+    return (value + " " + typeof(value));
+}
+console.log(detect_data_type("Щука"));
+console.log(detect_data_type(221));
+
