@@ -2,19 +2,19 @@
 
 let money = prompt("Ваш бюджет на месяц"," Пример: 30000").replace(/[^\d]/g, '');
     while (money == false) {
-        money = prompt("Ваш бюджет на месяц"," Пример: 30000").replace(/[^\d]/g, '');
+    money = prompt("Ваш бюджет на месяц"," Пример: 30000").replace(/[^\d]/g, '');
 };
 
 let time = prompt("Введите дату в формате YYYY-MM-DD","Пример: 1996-05-08");
 
 let exp1 = prompt("Введите обязательную статью расходов в этом месяце через запятую");
-    while (exp1 == false) {
-        exp1 = prompt("Введите обязательную статью расходов в этом месяце через запятую");
+    while (exp1 == false || exp1 == null) {
+    exp1 = prompt("Введите обязательную статью расходов в этом месяце через запятую");
 };
 
 let exp2 = prompt("Во сколько обойдется?","Пример: 20000").replace(/[^\d]/g, '');
     while (exp2 == false) {
-        exp2 = prompt("Во сколько обойдется?","Пример: 20000").replace(/[^\d]/g, '');
+    exp2 = prompt("Во сколько обойдется?","Пример: 20000").replace(/[^\d]/g, '');
     };
 let expensens = {
     whatMust:exp1,
@@ -38,20 +38,27 @@ let optionalExpenses = {
 };
 console.log(optionalExpenses);
 
+let chooseIncome = prompt("Ведите дополнительне источники дохода","Пример: Преподавание танцев, продажа домашних пирожков и т.д.");
+    while (chooseIncome == false || chooseIncome == null) {
+    chooseIncome = prompt("Обязательно ведите дополнительне источники дохода","Пример: Преподавание танцев, продажа домашних пирожков и т.д.");
+};
+
+chooseIncome.split(",").forEach(function(item, i, massChooseIncome) {
+    console.log("Спобосбы доп заработка " + (i+1) + ": " + item);
+});
+
 let appData = {
     cash:money,
     timeData:time,
-    expensess:expensens,
-    optionalExpensess:optionalExpenses,
+    expensens:{},
+    optionalExpenses:{},
     income:chooseIncome,
     savings:false
 };
-console.log(appData);
+console.log(Object.keys(appData).length);
 
-
-let chooseIncome = prompt("Ведите дополнительне источники дохода","Пример: Преподавание танцев, продажа домашних пирожков и т.д.");
-while (chooseIncome == false) {
-    chooseIncome = prompt("Обязательно ведите дополнительне источники дохода","Пример: Преподавание танцев, продажа домашних пирожков и т.д.");
+for (let key in appData) {
+    console.log("Наша программа включает в себя такие данные, как: " + appData[key]);
 };
 
 
@@ -78,7 +85,7 @@ function detectLevel () {
 detectLevel();
 
 
+
 console.log("Существует типы - строка, число, логическое выражение, undefind, null, объект и символ - всего 7");
 console.log("|| - или, && - И .  операторы сравнения, логические выражения.");
-console.log(typeof(exp1));
-console.log(typeof(money));
+console.log('Перебрать свойства объекта можно через метод for in');
