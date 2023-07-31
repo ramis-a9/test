@@ -42,3 +42,15 @@ for (let i = 1; i < mass.length; i++) {
 // while – Проверяет условие перед каждой итерацией.
 // do..while – Проверяет условие после каждой итерации.
 // for (;;) – Проверяет условие перед каждой итерацией, есть возможность задать дополнительные настройки.
+
+let appData = {
+    cash:{},
+    timeData:{},
+    expensens:{},
+    optionalExpenses:{},
+    income:{},
+    savings:true
+};
+
+(appData.savings = confirm("da net"));
+console.log(appData.savings);
