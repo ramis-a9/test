@@ -10,7 +10,7 @@ let startBtn = document.getElementById('start'),
     monthSavingsValue = document.querySelector('.monthsavings-value'),
     yearSavingsValue = document.querySelector('.yearsavings-value'),
 
-    expensesItem = document.querySelectorAll('.expenses-item'),
+    expensesItem = document.getElementsByClassName('expenses-item'),
     expensesBtn = document.getElementsByTagName('button')[0],
     optionalExpensesBtn = document.getElementsByTagName('button')[1],
     countBtn = document.getElementsByTagName('button')[2],
@@ -19,15 +19,16 @@ let startBtn = document.getElementById('start'),
     checkSavings = document.querySelector('#savings'), //Тут черезе # тк. в html мы искали по типу!
     sumValue = document.querySelector('.choose-sum'),
     percentValue = document.querySelector('.choose-percent'),
-    yearValue = document.querySelector('.year'),
-    monthValue = document.querySelector('.month'),
-    dayValues =document.querySelector('.day');
+    yearValue = document.querySelector('.year-value'),
+    monthValue = document.querySelector('.month-value'),
+    dayValue =document.querySelector('.day-value');
 
 
 let money, time;
 
+
 startBtn.addEventListener('click', function() {
-    time = prompt("Введите сегодняшнюю дату в формате YYYY-MM-DD","2023-31-07");
+    time = prompt("Введите сегодняшнюю дату в формате YYYY-MM-DD","2012-12-07");
     while (isNaN(money) || money == "" || money == null || money == NaN) {
          money = +prompt("Ваш бюджет на месяц","30000").replace(/[^\d]/g, '');
     };
@@ -37,9 +38,38 @@ startBtn.addEventListener('click', function() {
     yearValue.value = new Date(Date.parse(time)).getFullYear();    // Если у нас есть атрибут input - мы работает с value, а не через textcontent
     // любые действия с датами делаются через Объкт date т.к. это объект, он имеет методы свои
     // Здесь Если пользователь правмльно написал дату, наша команда превратит дату в кол - во милисекунд с 1970 года. А потом эти милисекунды, он превратит в нужную нам дату. Все мы достаем через методы  
-    monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
-    dayValues.value = new Date(Date.parse(time)).getDay();
+    monthValue.value = new Date(Date.parse(time)).getMonth() + 1; // Делаем +1, т.к. месяца в js считаются с 0 
+    dayValue.value = new Date(Date.parse(time)).getDate(); // getDate - команда !! Внимание на нее, не ДЭЙ !!
 });
+// console.log(expensesItem); // здесь у нас input-ы, мы будем работать с value
+
+
+expensesBtn.addEventListener('click', function (){
+    let sum = 0;
+
+    for (let i = 0; i < expensesItem.length; i++) {
+        let a = expensesItem[i].value; //здесь мы получим значение, которое введет человек в 1ой колонке.
+        let b = expensesItem[++i].value; //Здесь мы исп. префиксную форму -ПОВТООРИ Разницу!
+        if ( (typeof(a)) === "string" && (typeof(a)) != null && (typeof(b)) != null
+            && a != "" && b != "" && a.length < 50) {
+            console.log('Done');
+            appData.expensens[a] = b; // Квадратная скобка - тут мы используем ключ и значение. И так каждый раз по циклу, неорграниченное кол во раз в цикле
+            sum += +b; // += тут мы вседа прибавляем к нашей сумме значение b, +b запишет именно число
+        } else {
+            i--;
+        }
+    }
+    expensesValue.textContent = sum;
+    });
+
+    
+    optionalExpensesBtn.addEventListener('click', function() {
+        for (let i = 0; i < optionalExpensesItem.length; i++) {
+            let opt = optionalExpensesItem[i].value;
+            appData.optionalExpenses[i] = opt;
+            optionalExpensesValue.textContent += appData.optionalExpenses[i] + ' ';
+        }
+    });
     
     let appData = {
         cash:money,
@@ -49,17 +79,7 @@ startBtn.addEventListener('click', function() {
         income:[],
         savings:{},
         chooseExpenses: function () {
-            for (let i = 0; i < 1; i++) {
-                let exp1 = prompt("Введите обязательную статью расходов в этом месяце текстом, через запятую");
-                let exp2 = +prompt("Во сколько обойдется?","Пример: 20000").replace(/[^\d]/g, '');
-                if ( (typeof(exp1)) === "string" && (typeof(exp1)) != null && (typeof(exp2)) != null
-                    && exp1 != "" && exp2 != "" && exp1.length < 50) {
-                    console.log('Done');
-                    appData.expensens[exp1] = exp2; 
-                } else {
-                    i--;
-                }
-            }
+            
             
         },
         detectDayBudget: function () {
@@ -92,7 +112,7 @@ startBtn.addEventListener('click', function() {
         chooseOptExpenses: function() {
             for (let i = 1; i < 2; i++) {
                 let opt = prompt("Введите статью необязательных расходов","Пример: Одежда, отдых, гуляш мясной");
-                appData.optionalExpenses[i] = opt;
+                
             }
         },
         chooseIncomeFunc: function () {
