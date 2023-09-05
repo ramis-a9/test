@@ -63,7 +63,7 @@ expensesBtn.addEventListener('click', function (){
     });
 
     
-    optionalExpensesBtn.addEventListener('click', function() {
+optionalExpensesBtn.addEventListener('click', function() {
         for (let i = 0; i < optionalExpensesItem.length; i++) {
             let opt = optionalExpensesItem[i].value;
             appData.optionalExpenses[i] = opt;
@@ -71,72 +71,80 @@ expensesBtn.addEventListener('click', function (){
         }
     });
     
-    let appData = {
+
+countBtn.addEventListener('click', function() {
+
+    if (appData.cash != undefined) {
+            appData.moneyPerDay = (appData.cash/30).toFixed(); //тут мы расчитываем бюджет на 1 день и сразу записываем в глобальный объект 
+            dayBudgetValue.textContent = appData.moneyPerDay;
+
+        if (appData.moneyPerDay <= 500) {
+        levelValue.textContent = "вы относитесь к населению с низким уровнем дохода";
+        } else {
+        if ((appData.moneyPerDay) >= 2000) {
+            levelValue.textContent = "Вы относитесь к населению с высоким уровнем дохода";
+        } else {
+            levelValue.textContent = "вы относитесь к населению со средним уровнем дохода";
+        }
+        }
+    } else {
+        dayBudgetValue.textContent = 'Произошла ошибка';
+    }
+});
+
+    /* Событие input и событие change - 
+    input возникает тогда, когда мы что то вводим в поле в html, при каждом вводе символа
+    change возникает тогда, когда мы убираем мышь с метса inputa (ввода текста) и где то кликаем в другом месте (таи даже фокус пропадает) (наш input изменил свое value) */
+
+incomeItem.addEventListener('input', function () {
+    let items = incomeItem.value;
+    appData.income = items.split(', ');
+    incomeValue.textContent = appData.income;
+});
+
+checkSavings.addEventListener('click', function() {
+    if (appData.savings == true) {
+        appData.savings = false;
+    } else {
+        appData.savings = true;
+    }
+});
+
+sumValue.addEventListener('input', function() {
+    if (appData.savings == true) {
+        let sum = +sumValue.value,
+            percent = +percentValue.value; // +сы чтобы преобразовать в числовой тип данных
+        appData.monthIncome = sum/100/12*percent;
+        appData.yearIncome = sum/100*percent;
+
+        monthSavingsValue.textContent = appData.monthIncome.toFixed(1);
+        yearSavingsValue.textContent = appData.yearIncome.toFixed(1);
+
+    }
+});
+
+percentValue.addEventListener('input', function() {
+    if (appData.savings == true) {
+        let sum = +sumValue.value,
+            percent = +percentValue.value; // +сы чтобы преобразовать в числовой тип данных
+        appData.monthIncome = sum/100/12*percent;
+        appData.yearIncome = sum/100*percent;
+
+        monthSavingsValue.textContent = appData.monthIncome.toFixed(1);
+        yearSavingsValue.textContent = appData.yearIncome.toFixed(1);
+    }
+});
+
+
+let appData = {
         cash:money,
         timeData:time,
         expensens:{},
         optionalExpenses:{},
         income:[],
-        savings:{},
-        chooseExpenses: function () {
-            
-            
-        },
-        detectDayBudget: function () {
-            appData.moneyPerDay = ((appData.cash+appData.monthIncome)/ 30).toFixed(); //он округлит до целого, если вписать в скобки число, то до этого числа после запятой. НО он в любом случае даст строковое значение!
-            alert("Ежедневный бюджет " + appData.moneyPerDay);
-        },
-        detectLevel: function () {
-            if ((Number(money)+Number(appData.monthIncome)) <= 10000) {
-                alert ("Так как Ваш ежемесячный бюджет с доходом от банка меньше " + (Number(money)+Number(appData.monthIncome)) + " вы относитесь к населению с низким уровнем дохода");
-            } else {
-                if ((Number(money)+Number(appData.monthIncome)) >= 100000) {
-                alert ("Так как Ваш ежемесячный бюджет с доходом от банка больше " + (Number(money)+Number(appData.monthIncome)) + " вы относитесь к населению с высоким уровнем дохода");
-                } else {
-                alert ("Так как Ваш ежемесячный бюджет с доходом от банка до 100 000 руб, вы относитесь к населению со средним уровнем дохода");
-                }
-            }
-        },
-        checkSavings: function (){
-            appData.savings = confirm("Eсть ли у Вас накопления в банке под процент?");
-            if (appData.savings == true) {
-                let save = +prompt("Какова Сумма накоплений"),
-                    percent = +prompt("Под какой процент?").replace(/,/, ".");
-                appData.monthIncome = (((save/100/12)*(percent)).toFixed());
-                console.log(appData.monthIncome+'!!!!!!!!!!!!!!!!!!!!!');
-                appData.monthIncome = Number(appData.monthIncome);
-                alert("Доход в месяц с Вашего депозита " + appData.monthIncome);
-                console.log(appData.monthIncome+'!!!!!!!!!!!!!!!!!!!!!');
-            }
-        },
-        chooseOptExpenses: function() {
-            for (let i = 1; i < 2; i++) {
-                let opt = prompt("Введите статью необязательных расходов","Пример: Одежда, отдых, гуляш мясной");
-                
-            }
-        },
-        chooseIncomeFunc: function () {
-            let chooseIncome = prompt("Ведите дополнительне источники дохода","Пример: Преподавание танцев, продажа домашних пирожков и т.д.");
-            while (chooseIncome == false || chooseIncome == null || chooseIncome == "") {
-                chooseIncome = prompt("Обязательно ведите дополнительне источники дохода","Пример: Преподавание танцев, продажа домашних пирожков и т.д.");
-            }
-        appData.income = chooseIncome.split(",");
-        appData.income.push(prompt("Может что-то еще?"));
-        appData.income.sort();
-            chooseIncome.split(",").forEach(function(item, i, massChooseIncome) {
-                console.log("Спобосбы дополнительного заработка " + (i+1) + ": " + item);
-            })
-        }
-    };
+        savings: false,
+};
 
-
-
-    // appData.chooseExpenses();
-    // appData.chooseOptExpenses();
-    // appData.checkSavings();
-    // appData.chooseIncomeFunc();
-    // appData.detectDayBudget();
-    // appData.detectLevel();
-    //  startBtn.style.fontSize = '18px'; - Команда для изменения рамера шрифта через JS в HTML 
+//  startBtn.style.fontSize = '18px'; - Команда для изменения рамера шрифта через JS в HTML 
 
 
