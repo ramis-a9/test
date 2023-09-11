@@ -1,5 +1,7 @@
 'use strict';
 
+alert('Для начала работы нажмите кнопку снизу "Начать расчет"');
+
 let startBtn = document.getElementById('start'),
     budgetValue = document.querySelector('.budget-value'),
     dayBudgetValue = document.querySelector('.daybudget-value'),
@@ -44,51 +46,64 @@ startBtn.addEventListener('click', function() {
 // console.log(expensesItem); // здесь у нас input-ы, мы будем работать с value
 
 
-expensesBtn.addEventListener('click', function (){
-    let sum = 0;
 
-    for (let i = 0; i < expensesItem.length; i++) {
-        let a = expensesItem[i].value; //здесь мы получим значение, которое введет человек в 1ой колонке.
-        let b = expensesItem[++i].value; //Здесь мы исп. префиксную форму -ПОВТООРИ Разницу!
-        if ( (typeof(a)) === "string" && (typeof(a)) != null && (typeof(b)) != null
-            && a != "" && b != "" && a.length < 50) {
-            console.log('Done');
-            appData.expensens[a] = b; // Квадратная скобка - тут мы используем ключ и значение. И так каждый раз по циклу, неорграниченное кол во раз в цикле
-            sum += +b; // += тут мы вседа прибавляем к нашей сумме значение b, +b запишет именно число
-        } else {
-            i--;
-        }
+expensesBtn.addEventListener('click', function (){
+    if (money==undefined) {
+        alert('Нажмите кнопку - Начать Расчет внизу страницы');
+    } else {
+            let sum = 0;
+
+            for (let i = 0; i < expensesItem.length; i++) {
+                let a = expensesItem[i].value; //здесь мы получим значение, которое введет человек в 1ой колонке.
+                let b = expensesItem[++i].value; //Здесь мы исп. префиксную форму -ПОВТООРИ Разницу!
+                if ( (typeof(a)) === "string" && (typeof(a)) != null && (typeof(b)) != null
+                 && a != "" && b != "" && a.length < 50) {
+                    console.log('Done');
+                 appData.expensens[a] = b; // Квадратная скобка - тут мы используем ключ и значение. И так каждый раз по циклу, неорграниченное кол во раз в цикле
+                 sum += +b; // += тут мы вседа прибавляем к нашей сумме значение b, +b запишет именно число
+                } else {
+                    i--;
+                }
+            }
+         expensesValue.textContent = sum;
+         appData.sumExpenses = sum;
     }
-    expensesValue.textContent = sum;
     });
 
     
 optionalExpensesBtn.addEventListener('click', function() {
-        for (let i = 0; i < optionalExpensesItem.length; i++) {
-            let opt = optionalExpensesItem[i].value;
-            appData.optionalExpenses[i] = opt;
-            optionalExpensesValue.textContent += appData.optionalExpenses[i] + ' ';
-        }
+    if (money==undefined) {
+        alert('Нажмите кнопку - Начать Расчет внизу страницы');
+    } else {
+            for (let i = 0; i < optionalExpensesItem.length; i++) {
+                let opt = optionalExpensesItem[i].value;
+                appData.optionalExpenses[i] = opt;
+                optionalExpensesValue.textContent += appData.optionalExpenses[i] + ' ';
+            }
+    }
     });
     
 
 countBtn.addEventListener('click', function() {
-
-    if (appData.cash != undefined) {
-            appData.moneyPerDay = (appData.cash/30).toFixed(); //тут мы расчитываем бюджет на 1 день и сразу записываем в глобальный объект 
-            dayBudgetValue.textContent = appData.moneyPerDay;
-
-        if (appData.moneyPerDay <= 500) {
-        levelValue.textContent = "вы относитесь к населению с низким уровнем дохода";
-        } else {
-        if ((appData.moneyPerDay) >= 2000) {
-            levelValue.textContent = "Вы относитесь к населению с высоким уровнем дохода";
-        } else {
-            levelValue.textContent = "вы относитесь к населению со средним уровнем дохода";
-        }
-        }
+    if (money==undefined) {
+        alert('Нажмите кнопку - Начать Расчет внизу страницы');
     } else {
-        dayBudgetValue.textContent = 'Произошла ошибка';
+        if (appData.cash != undefined) {
+                appData.moneyPerDay = ((appData.cash - appData.sumExpenses)/30).toFixed(); //тут мы расчитываем бюджет на 1 день и сразу записываем в глобальный объект 
+                dayBudgetValue.textContent = appData.moneyPerDay;
+
+            if (appData.moneyPerDay <= 500) {
+            levelValue.textContent = "вы относитесь к населению с низким уровнем дохода";
+            } else {
+            if ((appData.moneyPerDay) >= 2000) {
+                levelValue.textContent = "Вы относитесь к населению с высоким уровнем дохода";
+            } else {
+                levelValue.textContent = "вы относитесь к населению со средним уровнем дохода";
+            }
+            }
+        } else {
+            dayBudgetValue.textContent = 'Произошла ошибка';
+     }
     }
 });
 
@@ -97,16 +112,24 @@ countBtn.addEventListener('click', function() {
     change возникает тогда, когда мы убираем мышь с метса inputa (ввода текста) и где то кликаем в другом месте (таи даже фокус пропадает) (наш input изменил свое value) */
 
 incomeItem.addEventListener('input', function () {
-    let items = incomeItem.value;
-    appData.income = items.split(', ');
-    incomeValue.textContent = appData.income;
+    if (money==undefined) {
+        alert('Нажмите кнопку - Начать Расчет внизу страницы');
+    } else {
+        let items = incomeItem.value;
+        appData.income = items.split(', ');
+        incomeValue.textContent = appData.income;
+    }
 });
 
 checkSavings.addEventListener('click', function() {
-    if (appData.savings == true) {
-        appData.savings = false;
+    if (money==undefined) {
+        alert('Нажмите кнопку - Начать Расчет внизу страницы');
     } else {
-        appData.savings = true;
+        if (appData.savings == true) {
+            appData.savings = false;
+        } else {
+            appData.savings = true;
+        }
     }
 });
 
