@@ -27,14 +27,16 @@
 
 let btn = document.querySelector('.btn'),
     elem = document.querySelector('.box');
+btn.textContent = 'СТАРТ';
 
 
 function myAnimation() {
     let pos = 0;  // На данный момент параметры TOP и Left = 0, если они будут изменяться пропорционально, то, квадрат будет смещаться вниз по диагонали.
 
-    let id = setInterval(frame, 10); //Изначально позиция равна 0. После этого, кадлые 10 милисек, мы запускаем функцию frame.
+    let id = setInterval(frame, 50); //Изначально позиция равна 0. После этого, кадлые 10 милисек, мы запускаем функцию frame.
     function frame () { //Эту функцию мы будем запускать каждый раз исп. setInterval
             if (pos == 300) {    //Если достигнет 300 пикселей
+                alert('ПОШЕЛ НАХУЙ');
                 clearInterval(id); //здесь мы вписали id, чтобы таймер остановился 
             } else {
                 pos++;
@@ -45,3 +47,29 @@ function myAnimation() {
 };
 
 btn.addEventListener('click', myAnimation);
+
+/* Делегирование - у нас там несколько кнопок, мы хотим, чтобы они работали все одинаково.
+Для этого мы берем Родителя этих кнопок и будем назначить только с ним. Будем назначать функции для его потомков!
+Это для того, чтобы не писать на кажду кнопку действие, ведь могут появляться и новые кнопки */
+
+let btnBlock = document.querySelector('.btn-block'), // Через точку, т.к. это класс
+    btns = document.getElementsByTagName('button');
+
+// btnBlock.addEventListener('click', function(e) {  //Делаем Делегирование
+//    if (e.target && e.target.tagName == 'BUTTON') { // Здесь мы должны проверить, ткнул ли именно на кнопку, а не на обертку и выполняем действие
+//         console.log('Hello');  // Event.target - тут понятно (цель), e.target.tagName имеют ТЭГ - BUTTON, но работает и без первого условия 
+//         }
+// });
+
+// btnBlock.addEventListener('click', function(e) {  
+//     if (e.target && e.target.classList.contains('first')) { //Здесь мы сделали акцент именно на название класса (там в файле написано было), а не на все кнопки
+//          console.log('Hello');  
+//          }
+//  });
+
+ btnBlock.addEventListener('click', function(e) {  
+    if (e.target && e.target.matches('button.first')) { // А это метод с поиском опр кнопки и классом 
+         console.log('Hello');  
+         }
+ }); 
+ // Делегирование событий отлично подходит, когда есть много элементов у родителя, чем мы экономи место и память браузера
