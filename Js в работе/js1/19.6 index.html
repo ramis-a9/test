@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="19.7 style.css">
+</head>
+<body>
+    <button class="btn">Animate</button>
+    <div class="wrapper">
+        <div class="box"></div>
+    </div>
+
+    <div class="btn-block">
+        <button class="first"></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+    </div>
+    <script>
+        let btn = document.querySelector('.btn'),
+    elem = document.querySelector('.box');
+btn.textContent = 'СТАРТ';
+
+
+function myAnimation() {
+    let pos = 0;  // На данный момент параметры TOP и Left = 0, если они будут изменяться пропорционально, то, квадрат будет смещаться вниз по диагонали.
+
+    let id = setInterval(frame, 50); //Изначально позиция равна 0. После этого, кадлые 10 милисек, мы запускаем функцию frame.
+    function frame () { //Эту функцию мы будем запускать каждый раз исп. setInterval
+            if (pos == 285) {    //Если достигнет 300 пикселей
+                alert('ПОШЕЛ НАХУЙ');
+                clearInterval(id); //здесь мы вписали id, чтобы таймер остановился 
+            } else {
+                pos++;
+                elem.style.top = pos + 'px'; //здесь я так понял ставил наш элемент на по координатам.
+                elem.style.left = pos + 'px';
+                elem.style.left = pos+15 + 'px';
+            }
+    }
+};
+
+btn.addEventListener('click', myAnimation);
+    </script>
+</body>
+</html>
