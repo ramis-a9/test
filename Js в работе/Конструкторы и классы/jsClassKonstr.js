@@ -97,3 +97,27 @@ console.log(sayName.call(user, 'Smith')); // но разница в метода
 console.log(sayName.apply(user, ['Snow'])); // а здесь уже массив
 // Если нужно передать несколько каких то аргументов - исп apply , тк можно передать массив с кучей данных
 
+function count (number) {
+    return this * number; //сейчас без привязки, наш this будет ссылаться на window.Поэтому мы должны this к чему то приязать
+};
+
+let double = count.bind(2); // Теперь, мы через новый мето bind привязали this к 2. То есть контекстом вызова стала 2ойка. 
+// Если сказать совсем просто, то что мы передаем в аргумент функции, всегда заменит значение this
+
+console.log(double(3));
+console.log(double(10)); // В общем, мы контекст вызова жестко привязали к нашей функции
+
+// 4) Указание конкретного контекста - call, apply, bind  сверху было
+
+// 5) Если мы пытаемся вывзвать контекст вызова из под addEventListner, то конекстом вызова будет сам элемент
+// Как можно использовать
+let btn = document.querySelector('button');
+btn.addEventListener('click', function() {
+    console.log(this);
+    this.style.backgroundColor = 'red'; //здесь, т.к. у нас this ссылается на сам элемент button, то это позволяет нам использовать this для изменения стиля, как например используя Таргет
+    function showThis228() {
+        console.log(this);
+    }
+    showThis228(); //Здесь у нас опять буде window. Тк контекст вызова для функции внутри функции window !!
+});
+
