@@ -1,45 +1,91 @@
 let inputRub = document.getElementById('rub'),
     inputUsd = document.getElementById('usd');
-
-
-function inputPromise () {
-    
+        
+inputRub.addEventListener('input', function() {
     return new Promise(function(resolve, reject) {
-
-    inputRub.addEventListener('input', () => {
-
-        console.log('stage 1');
-
-            let request = new XMLHttpRequest();
-
-            request.open('GET', 'current.json');
-            request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-            request.send();
-       
-            request.addEventListener('readystatechange', function() {
+        let request = new XMLHttpRequest();
+        request.open('GET', 'current.json');
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        request.send();
+        request.addEventListener('readystatechange', function() {
+            if (request.readyState < 5) {
                 let data = JSON.parse(request.response);
-                if (request.readyState === 4 && request.status == 200) {
-                    console.log(data.usd);
-                    console.log('stage 2');
-                    resolve()
-                    } else if (request.readyState < 4) {
-                        resolve()
-                    } else {
-                        console.log('stage 3')
-                        reject()
-                    }
-            })
+                resolve(data)
+            } else {
+                let data = JSON.parse(request.response);
+                reject()
+            }
+        })
     })
-    })
-};
-
-inputPromise()
-    .then(() => {
-        console.log(data.usd+'Типа да');
+    .then((data) => {
+        inputUsd.value = inputRub.value/data.usd;
     })
     .catch(() => {
-        console.log('НИХУЯ НЕ РАБОТАЕТ');
+        inputUsd.value = 'Ошибка';
     })
+    
+});
+
+// function json() {
+//     let request = new XMLHttpRequest();
+//         request.open('GET', 'current.json');
+//         request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+//         request.send();
+
+//         request.addEventListener('readystatechange', function() {
+//             let data = JSON.parse(request.response);
+//             if (request.readyState <= 5) {
+//                 console.log(data);
+//             }
+//         })
+// };
+// json();
+    
+
+    
+
+
+
+
+
+//     function inputPromise () {
+    
+//     return new Promise(function(resolve, reject) {
+
+//     inputRub.addEventListener('input', () => {
+
+//         console.log('stage 1');
+
+//             let request = new XMLHttpRequest();
+
+//             request.open('GET', 'current.json');
+//             request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+//             request.send();
+       
+//             request.addEventListener('readystatechange', function() {
+//                 let data = JSON.parse(request.response);
+//                 if (request.readyState === 4 && request.status == 200) {
+//                     console.log(data.usd);
+//                     console.log('stage 2');
+//                     resolve()
+//                     } else if (request.readyState < 4) {
+//                         resolve()
+//                     } else {
+//                         console.log('stage 3')
+//                         reject()
+//                     }
+//             })
+//     })
+//     })
+// };
+
+// inputPromise()
+//     .then(() => {
+//         console.log(data.usd+'Типа да');
+//     })
+//     .catch(() => {
+//         console.log('НИХУЯ НЕ РАБОТАЕТ');
+//     })
 
     
 
