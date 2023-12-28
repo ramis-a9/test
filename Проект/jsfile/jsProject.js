@@ -294,6 +294,8 @@ window.addEventListener('DOMContentLoaded', function() {  // Наш js Начн�
 
         if (restDays.value == '') {
             totalValue.innerHTML = 0; // тут мы говорим, если у нас пустой второй инпут, мы ничего не передаем в тотал
+        } else if (persons.value == 0) {
+            totalValue.innerHTML = 0;
         } else {
             totalValue.innerHTML = total;
         }
@@ -305,6 +307,8 @@ window.addEventListener('DOMContentLoaded', function() {  // Наш js Начн�
 
         if (persons.value == '') {
             totalValue.innerHTML = 0; 
+        } else if (restDays.value == 0) {
+            totalValue.innerHTML = 0;
         } else {
             totalValue.innerHTML = total;
         }
