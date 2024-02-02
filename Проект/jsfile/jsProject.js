@@ -49,10 +49,7 @@ window.addEventListener('DOMContentLoaded', function() {  // Наш js Начн�
             }
         }
     });
-    console.log('fdfd');
-    console.log(tab);
-    console.log(info);
-    console.log(tabContent);
+    
 
 
 // !!!!!!!!!!!!! УСТАНОВКА ТАЙМЕРА !!!!!!!!!!!!!!!!!!!!!!!!

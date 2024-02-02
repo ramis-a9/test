@@ -4,12 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="src/style.css"> -->
+
+    <style>
+      .tabs__content {
+	display: none; /* по умолчанию прячем все блоки */
+}
+.tabs__content.active {
+	display: block; /* по умолчанию показываем нужный блок */
+}
+    </style>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   </head>
   <body>
     <h1 id="header"></h1>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="36-37.Модули и ИнкапсуляцияГеттеры.js"></script>
-    <script src="36-37 main.js"></script>
+    <div class="tabs">
+      <ul class="tabs__caption">
+        <li class="active">1-я вкладка</li>
+        <li>2-я вкладка</li>
+      </ul>
+      <div class="tabs__content active">
+        Содержимое первого блока
+      </div>
+      <div class="tabs__content">
+        Содержимое второго блока
+      </div>
+    </div><!-- .tabs -->
+
+
+<!-- Add images to <div class="fotorama"></div> -->
+<div class="fotorama" data-width="900" data-ratio="500/567" data-max-width="100%">
+  <img src="Без названия (1).jpg">
+  <img src="myfinbroker.png">
+  <img src="finbroker_600x460.jpg">
+</div>
+
+
+<script src="40РаботаемСГотовымКодом.js"></script>
+<link href="fotorama.css" rel="stylesheet">
+<script src="fotorama.js"></script>
+
+<script>
+  (function($) {
+      $(function() {
+
+	    $('ul.tabs__caption').on('click', 'li:not(.active)', function() {
+		    $(this).addClass('active').siblings().removeClass('active')
+			    .closest('div.tabs').find('div.tabs__content').removeClass('active').eq($(this).index()).addClass('active');
+	    })
+      })
+  })(jQuery)
+</script>
+
   </body>
 </html>
