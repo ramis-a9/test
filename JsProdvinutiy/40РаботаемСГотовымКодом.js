@@ -12,13 +12,6 @@
 //  ТЕПЕРЬ ТАБЫ. Отдельных файло нет, тк скрипт очень легкий и просто модернизируется под себя
     // Всегда стараемся следить за версией jquery , разные плагины могут просить разные версии, что то новее, что то старее
 
-    function numberToString(num) {
-        num = num + '';
-        console.log(typeof(num));
-        console.log(num);
-        // Return a string of the number here!
-      }
-      numberToString(-23232)
-
+   
 
 
