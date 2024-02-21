@@ -1,0 +1,31 @@
+
+*{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .page{
+    height: 700px;
+  }
+  
+  
+  #pullover{
+    background-image: url('https://img4.cliparto.com/pic/xl/247008/4945121-knit-woolen-seamless-ethnic-ornament-texture-fabri.jpg');
+    background-size: 12%;
+}
+  
+  #bike{
+    background-color: darkgreen;
+    background-position: left bottom;
+    background-size: 100px;
+    background-image: url('https://www.publicdomainpictures.net/pictures/290000/nahled/penny-farthing-bicycle.png') no-repeat;
+}
+  
+  #photo{
+     background-image: url('https://d.newsweek.com/en/full/1829968/rick-morty-peace-season-5.webp');
+     background-size: 45%;
+     background-position: 50%;
+     background-repeat: no-repeat;
+     background-color: rgba(202, 93, 73, 0.904);
+  }
+
