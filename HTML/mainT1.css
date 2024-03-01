@@ -1,31 +1,86 @@
 body {
-  background-color: rgb(235, 236, 236);
+  font-family: 'Raleway', sans-serif;
+  color: #213053; /* цвет текста */
   margin: 0;
-  font-family: sans-serif;
 }
 
 header{
-  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #95a5a6;
-  color: #2c3e50;
-}
-
-nav span{
-  margin-left: 20px;
-}
-
-.logo{
-  width: 100px;
-}
-
-.btns button{
-  border: none;
-  background-color: #2c3e50;
-  color: #95a5a6;
   padding: 10px;
-  cursor: pointer;
-  transition: box-shadow 0.5s ease;
 }
+
+.header__logo {
+  height: 100px;
+}
+
+a {
+  text-decoration: none;
+  color: #213053; /* сейчас мы убрали подчеркивание для вообще всех тегов а */
+}
+
+header a {  /* здесь мы ставим стили для всех <а> внутри header */
+  font-size: 15px; /* здесь ставим размер текста*/
+  font-weight: 700; /* здесь ставим толщину*/
+  margin-right: 20px;
+}
+
+button {
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  color: #fff;;
+  background-color: #23a030;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 16px 36px rgb(52 213 68 / 22%);
+  padding: 12px;
+}
+
+.about__sun-image {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.about__image {
+  width: 400px;
+}
+
+.about {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: url(img/background3.jpg) no-repeat; 
+  background-position: center;
+  background-size: cover; /* тут мы сказали , чтобы картинка растянулась, полностью покрывая размер блока*/
+}
+
+.about h1 {
+  font-size: 70px;
+  line-height: 76px;
+}
+
+.about p {
+  font-size: 20px;
+  line-height: 20px;
+  opacity: 0.8;
+}
+
+.about button {
+  font-size: 18px;
+  border-radius: 20px;
+  padding: 20px 25px; /* Тут мы сдеалил отсутп сверху снизу 20, слева справа 25 */
+  margin-top: 20px;
+}
+
+.about_info {
+  max-width: 550px;
+}
+
+
+
