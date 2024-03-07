@@ -1,0 +1,108 @@
+html {
+    cursor: url("https://i.postimg.cc/90gM1DwV/1.png"), pointer;
+    height: 100vh;
+}
+
+
+body {
+    background-color: rgb(235, 210, 233);
+}
+
+
+.h1_1 {
+    font-family: Bradley Hand, cursive;
+    color:rgb(233, 110, 140);
+    font-weight: 1500;
+    font-size: 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 110px;
+}
+
+.h1_2 {
+    
+    font-family: Bradley Hand, cursive;
+    color:rgb(233, 110, 140);
+    font-weight: 1500;
+    font-size: 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 110px;
+    display: none;
+}
+
+.gif1 {
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.gif2 {
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.gif1_1 {
+    height: 300px;
+    display: block;
+}
+
+.gif2_2 {
+    height: 300px;
+    display: none;
+}
+
+.text {
+    display: flex;
+    margin-top: 290px;
+    justify-content: center;
+    font-family: Bradley Hand, cursive;
+    color:rgb(240, 29, 81);
+    font-weight: 1500;
+    font-size: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    font-family: Bradley Hand, cursive;
+}
+
+.ramis_product {
+    display: flex;
+    justify-content: right;
+    align-items: start;
+    margin-top: 30px;
+}
+
+.yes {
+    font-family: Bradley Hand, cursive;
+    font-weight: 700;
+    background-color: rgb(233, 148, 148);
+    color: rgb(199, 39, 18);
+    width: 80px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 16px 36px rgb(52 213 68 / 22%);
+    margin-right: 100px;
+}
+
+.no {
+    font-family: Bradley Hand, cursive;
+    font-weight: 700;
+    background-color: rgb(233, 148, 148);
+    color: rgb(199, 39, 18);
+    width: 80px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 16px 36px rgb(52 213 68 / 22%);
+    position: absolute;
+    left: 50%;
+    top: 87,5%;
+    transition: 0,09s;
+}
