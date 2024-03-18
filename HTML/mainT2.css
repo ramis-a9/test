@@ -2,42 +2,25 @@ body {
 	background-color: #6f9e80;
 	margin: 0;
 	font-family: sans-serif;
-  
-  }
-  
-  .squares{
-	  padding: 20px;
+	margin: 10px;
+  } 
+  .field{
 	  display: flex;
+	  justify-content: space-between;
+	  width: 400px;
+	  margin: 10px 0;
   }
   
-  
-  .squares div{
-	  font-size: 50px;
+  .btns{
+	  display: flex;
+	  justify-content: space-between;
+	  width: 400px;
   }
   
-  .sq_1{
-	  background-color: #2980b9;
-	  margin-right: 20px;
-  }
-  .sq_2{
-	  background-color: #8e44ad;
-	  margin-top: 40px;
-	  margin-bottom: 40px;
-	  margin-left: 20px;
-	  margin-right: 20px;
-  }
-  .sq_3{
-	  background-color: #d35400;
-	  margin: 10px;
-  }
-  .sq_4{
-	  background-color: #f39c12;
-	  margin-top: 10px;
-	  margin-bottom: 30px;
-	  margin-left: 40px;
-	  margin-right: 20px;
-  }
-
-  div {
-	padding: 10px;
+  .btns button{
+	  border: none;
+	  background-color: #34495e;
+	  color: #ecf0f1;
+	  padding: 5px;
+	  border-radius: 5px;
   }

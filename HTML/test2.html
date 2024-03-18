@@ -6,12 +6,29 @@
 </head>
 
 <body>
-	<div class='squares'>
-		<div class='sq_1'>╳</div>
-		<div class='sq_2'>╳</div>
-		<div class='sq_3'>╳</div>
-		<div class='sq_4'>╳</div>
-	</div>
-</body>
-
+	<form>
+	 <div class='field'>
+	  <label for='name_in'>Имя: </label>
+	  <input type='text' id='name_in'>
+	 </div>
+	 <div class='field'>
+	  <label for='name_in2'>Фамилия: </label>
+	  <input type='text' id='name_in2'>
+	 </div>
+	 <div class="field">
+		<label for="number">Номер телефона</label>
+		<input id="number" type="text" placeholder="8-999-999-99-99">
+	 </div>
+	 <div class="field">
+		<label for="old">Возраст</label>
+		<input type="number" min="0" max="150">
+	 </div>
+	 <div class='btns' onsubmit='return false'>
+	  <button type='submit' onclick='alert("Форма отправлена");	return false'>Отправить</button>
+	  <button type="button" onclick='alert("Добрый день!");return false'>Поздороваться</button>
+	  <button type="reset">Очистить форму</button>
+	 </div>
+	</form>
+   </body>
+</html>
 </html>
