@@ -82,5 +82,47 @@ button {
   max-width: 550px;
 }
 
+.form__container {
+  width: 550px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1D263A;
+  color: #fff;
+  padding-bottom: 115px;
+  padding-top: 115px;
+  text-align: center;
+}
+
+.form h1 {
+  font-size: 48px;
+}
+
+.form p {
+  font-size: 18px;
+  opacity: 0.65;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form form {
+  display: grid;
+  grid-gap: 20px;
+  margin-top: 30px;
+}
+
+.form label {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
 
 
