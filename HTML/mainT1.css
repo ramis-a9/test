@@ -173,12 +173,27 @@ footer {
 
 .footer__container {
   display: flex;
-  text-align: center;
   justify-content: center;
 }
 
 .footer__copyright {
   margin-top: 40px;
   text-align: center;
+  opacity: 0.5;
+}
+
+.footer__group {
+  margin-right: 80px;
+}
+
+.footer__container h3 {
+  font-size: 16px;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.footer__links {
+  flex-direction: column;
+  line-height: 2;
 }
 
